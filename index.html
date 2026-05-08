@@ -7,379 +7,86 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --cream: #fdf8f4;
-      --blush: #e8c4cc;
-      --rose: #b87a8a;
-      --deep: #7a3d4e;
-      --text: #2c1a1f;
-      --text-soft: #7a6066;
-      --text-lighter: #b0979e;
-      --card-bg: #fff9f7;
-      --card-border: #f0dde3;
-      --green: #5a8a6a;
-      --green-bg: #edf5f0;
-      --gold: #c9a96e;
+      --cream: #fdf8f4; --blush: #e8c4cc; --rose: #b87a8a; --deep: #7a3d4e;
+      --text: #2c1a1f; --text-soft: #7a6066; --text-lighter: #b0979e;
+      --card-bg: #fff9f7; --card-border: #f0dde3;
+      --green: #5a8a6a; --green-bg: #edf5f0;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--cream);
-      color: var(--text);
-      font-family: 'Jost', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Background texture */
+    body { background: var(--cream); color: var(--text); font-family: 'Jost', sans-serif; min-height: 100vh; overflow-x: hidden; }
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 10% 0%, rgba(232,196,204,0.35) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 90% 100%, rgba(201,169,110,0.18) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 10% 0%, rgba(232,196,204,0.35) 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 50% at 90% 100%, rgba(201,169,110,0.18) 0%, transparent 60%);
     }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem 4rem;
-    }
-
-    /* ── Header ── */
-    header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-      animation: fadeDown .7s ease both;
-    }
-
-    .header-eyebrow {
-      font-size: 11px;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: .75rem;
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 7vw, 48px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--text);
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--deep);
-    }
-
-    .personal-msg {
-      background: white;
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.2rem 1.5rem;
-      margin: 1.2rem auto 1rem;
-      max-width: 520px;
-      font-size: 14px;
-      color: var(--text-soft);
-      line-height: 1.7;
-      font-weight: 300;
-      text-align: left;
-      box-shadow: 0 2px 12px rgba(122,61,78,.05);
-    }
-
-    .personal-msg strong { color: var(--deep); font-weight: 500; }
-
-    .header-sub {
-      margin-top: .85rem;
-      font-size: 14px;
-      color: var(--text-soft);
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 1.5rem auto;
-      max-width: 260px;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--blush));
-    }
+    .container { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    header { text-align: center; margin-bottom: 2.5rem; animation: fadeDown .7s ease both; }
+    .header-eyebrow { font-size: 11px; letter-spacing: .25em; text-transform: uppercase; color: var(--rose); margin-bottom: .75rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 7vw, 48px); font-weight: 400; line-height: 1.1; }
+    h1 em { font-style: italic; color: var(--deep); }
+    .divider { display: flex; align-items: center; gap: 12px; margin: 1.5rem auto; max-width: 260px; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--blush)); }
     .divider::after { background: linear-gradient(to left, transparent, var(--blush)); }
     .divider span { font-size: 14px; color: var(--blush); }
-
-    /* ── Stats ── */
-    .stats {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 2rem;
-      animation: fadeUp .7s .15s ease both;
+    .personal-msg {
+      background: white; border: 1px solid var(--card-border); border-radius: 16px;
+      padding: 1.2rem 1.5rem; margin: 1.2rem auto 1rem; max-width: 520px;
+      font-size: 14px; color: var(--text-soft); line-height: 1.7; font-weight: 300; text-align: left;
+      box-shadow: 0 2px 12px rgba(122,61,78,.05);
     }
-
-    .stat {
-      background: white;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 12px 22px;
-      text-align: center;
-      box-shadow: 0 2px 12px rgba(122,61,78,.06);
-    }
-
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      color: var(--deep);
-    }
-
-    .stat-lbl {
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--text-lighter);
-      margin-top: 2px;
-    }
-
-    /* ── Category ── */
-    .cat-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 1.8rem 0 .75rem;
-    }
-
-    .cat-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .cat-label {
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--text-lighter);
-      font-weight: 500;
-    }
-
-    .cat-line {
-      flex: 1;
-      height: 1px;
-      background: var(--card-border);
-    }
-
-    /* ── Product card ── */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 9px;
-      transition: box-shadow .2s, opacity .3s, border-color .3s;
-      animation: fadeUp .5s ease both;
-    }
-
+    .personal-msg strong { color: var(--deep); font-weight: 500; }
+    .header-sub { margin-top: .85rem; font-size: 14px; color: var(--text-soft); font-weight: 300; line-height: 1.6; }
+    .stats { display: flex; gap: 10px; justify-content: center; margin-bottom: 2rem; animation: fadeUp .7s .15s ease both; }
+    .stat { background: white; border: 1px solid var(--card-border); border-radius: 14px; padding: 12px 22px; text-align: center; box-shadow: 0 2px 12px rgba(122,61,78,.06); }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--deep); }
+    .stat-lbl { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-lighter); margin-top: 2px; }
+    .cat-header { display: flex; align-items: center; gap: 10px; margin: 1.8rem 0 .75rem; }
+    .cat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .cat-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-lighter); font-weight: 500; }
+    .cat-line { flex: 1; height: 1px; background: var(--card-border); }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 1rem 1.25rem; margin-bottom: 9px; transition: box-shadow .2s, opacity .3s, border-color .3s; animation: fadeUp .5s ease both; }
     .card:hover { box-shadow: 0 4px 20px rgba(122,61,78,.1); }
-
-    .card.reserved {
-      opacity: .55;
-      border-color: #c8e0cf;
-      background: #f7fdf9;
-    }
-
-    .card-inner {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .card-color-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
+    .card.reserved { opacity: .55; border-color: #c8e0cf; background: #f7fdf9; }
+    .card-inner { display: flex; align-items: center; gap: 14px; }
+    .card-color-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
     .card-body { flex: 1; min-width: 0; }
-
-    .card-name {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 2px;
-    }
-
-    .card-meta {
-      font-size: 12px;
-      color: var(--text-lighter);
-      margin-bottom: 3px;
-    }
-
-    .card-price {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--rose);
-    }
-
-    .card-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    .btn-link {
-      font-size: 11px;
-      color: var(--text-lighter);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 5px 10px;
-      text-decoration: none;
-      transition: background .15s, color .15s;
-      white-space: nowrap;
-    }
+    .card-name { font-size: 14px; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+    .card-meta { font-size: 12px; color: var(--text-lighter); margin-bottom: 3px; }
+    .card-price { font-size: 13px; font-weight: 500; color: var(--rose); }
+    .card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .btn-link { font-size: 11px; color: var(--text-lighter); border: 1px solid var(--card-border); border-radius: 8px; padding: 5px 10px; text-decoration: none; transition: background .15s, color .15s; white-space: nowrap; }
     .btn-link:hover { background: var(--blush); color: var(--deep); border-color: var(--blush); }
-
-    .btn-reserve {
-      font-size: 12px;
-      font-weight: 500;
-      border: none;
-      border-radius: 10px;
-      padding: 7px 14px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all .15s;
-      background: linear-gradient(135deg, var(--blush), #d4a0ac);
-      color: var(--deep);
-    }
+    .btn-reserve { font-size: 12px; font-weight: 500; border: none; border-radius: 10px; padding: 7px 14px; cursor: pointer; white-space: nowrap; background: linear-gradient(135deg, var(--blush), #d4a0ac); color: var(--deep); transition: all .15s; }
     .btn-reserve:hover { background: linear-gradient(135deg, #d4a0ac, var(--rose)); color: white; transform: translateY(-1px); }
-
-    .badge-reserved {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      color: var(--green);
-      background: var(--green-bg);
-      border: 1px solid #c0ddc8;
-      padding: 5px 11px;
-      border-radius: 8px;
-    }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 12px;
-      color: var(--text-lighter);
-    }
-
-    footer a { color: var(--rose); text-decoration: none; }
-
-    /* ── Modal ── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(44,26,31,.5);
-      backdrop-filter: blur(4px);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
+    .btn-unreserve { font-size: 11px; font-weight: 500; border: 1px solid #c8e0cf; border-radius: 10px; padding: 6px 12px; cursor: pointer; white-space: nowrap; background: var(--green-bg); color: var(--green); transition: all .15s; }
+    .btn-unreserve:hover { background: #fdeaea; color: #a04040; border-color: #f0c0c0; }
+    footer { text-align: center; margin-top: 3rem; font-size: 12px; color: var(--text-lighter); }
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(44,26,31,.5); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; padding: 1rem; }
     .modal-overlay.open { display: flex; }
-
-    .modal {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 2rem;
-      max-width: 360px;
-      width: 100%;
-      box-shadow: 0 20px 60px rgba(44,26,31,.25);
-      animation: modalIn .25s ease;
-    }
-
-    .modal h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: .5rem;
-    }
-
-    .modal p {
-      font-size: 13px;
-      color: var(--text-soft);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
+    .modal { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 2rem; max-width: 360px; width: 100%; box-shadow: 0 20px 60px rgba(44,26,31,.25); animation: modalIn .25s ease; }
+    .modal h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: var(--text); margin-bottom: .5rem; }
+    .modal p { font-size: 13px; color: var(--text-soft); line-height: 1.6; margin-bottom: 1.5rem; }
     .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-
-    .btn-cancel {
-      font-size: 13px;
-      color: var(--text-soft);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 9px 16px;
-      cursor: pointer;
-      background: none;
-      transition: background .15s;
-    }
+    .btn-cancel { font-size: 13px; color: var(--text-soft); border: 1px solid var(--card-border); border-radius: 10px; padding: 9px 16px; cursor: pointer; background: none; }
     .btn-cancel:hover { background: #f5ede9; }
-
-    .btn-confirm {
-      font-size: 13px;
-      font-weight: 500;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 9px 18px;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--rose), var(--deep));
-      transition: opacity .15s, transform .15s;
-    }
-    .btn-confirm:hover { opacity: .9; transform: translateY(-1px); }
-
-    /* ── Animations ── */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(.95); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-
-    @media (max-width: 480px) {
-      .card-name { font-size: 13px; }
-      .btn-reserve { font-size: 11px; padding: 6px 10px; }
-      .btn-link { display: none; }
+    .btn-confirm { font-size: 13px; font-weight: 500; color: white; border: none; border-radius: 10px; padding: 9px 18px; cursor: pointer; background: linear-gradient(135deg, var(--rose), var(--deep)); }
+    .btn-confirm:hover { opacity: .9; }
+    .loading { text-align: center; padding: 3rem; color: var(--text-lighter); font-size: 14px; }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes modalIn { from { opacity: 0; transform: scale(.95); } to { opacity: 1; transform: scale(1); } }
+    @media (max-width: 520px) {
+      .card-inner { flex-wrap: wrap; gap: 10px; }
+      .card-color-dot { display: none; }
+      .card-body { flex: 1 1 100%; }
+      .card-name { font-size: 13px; white-space: normal; }
+      .card-actions { width: 100%; justify-content: flex-end; }
+      .btn-link { display: inline-block; }
+      h1 { font-size: 28px; }
     }
   </style>
 </head>
 <body>
-
 <div class="container">
   <header>
     <div class="header-eyebrow">✦ mi cumpleaños se acerca ✦</div>
@@ -391,97 +98,91 @@
     </div>
     <p class="header-sub">Marca el regalo que vas a hacerme para que nadie se repita ✨</p>
   </header>
-
   <div class="stats">
-    <div class="stat">
-      <div class="stat-num" id="stat-free">–</div>
-      <div class="stat-lbl">disponibles</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" id="stat-taken">–</div>
-      <div class="stat-lbl">reservados</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">15</div>
-      <div class="stat-lbl">en total</div>
-    </div>
+    <div class="stat"><div class="stat-num" id="stat-free">–</div><div class="stat-lbl">disponibles</div></div>
+    <div class="stat"><div class="stat-num" id="stat-taken">–</div><div class="stat-lbl">reservados</div></div>
+    <div class="stat"><div class="stat-num">15</div><div class="stat-lbl">en total</div></div>
   </div>
-
-  <div id="list"></div>
-
-  <footer>
-    Hecho con 💄 para <strong>@conimendez.makeup</strong>
-  </footer>
+  <div id="list"><div class="loading">Cargando productos... ✨</div></div>
+  <footer>Hecho con 💄 para <strong>@conimendez.makeup</strong></footer>
 </div>
 
-<!-- Modal -->
+<!-- Modal reservar -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <h2>¿Regalas esto? 🎁</h2>
-    <p id="modal-body">Una vez que confirmes, aparece como reservado para todos.</p>
+    <p id="modal-body"></p>
     <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
-      <button class="btn-confirm" onclick="confirmReserve()">Sí, ¡lo regalo yo!</button>
+      <button class="btn-cancel" id="btn-cancel-reserve">Cancelar</button>
+      <button class="btn-confirm" id="btn-confirm-reserve">Sí, ¡lo regalo yo!</button>
     </div>
   </div>
 </div>
 
-<script>
+<!-- Modal desreservar -->
+<div class="modal-overlay" id="modal-unreserve">
+  <div class="modal">
+    <h2>¿Cancelar reserva? 🤔</h2>
+    <p id="modal-unreserve-body"></p>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="btn-cancel-unreserve">No, mantener</button>
+      <button class="btn-confirm" style="background:linear-gradient(135deg,#a06070,#5a3040)" id="btn-confirm-unreserve">Sí, liberar</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, onValue, set, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB7klMudjQaq3QCJwZSk0xuWwqEvWpfh_o",
+  authDomain: "wishlist-conimendez.firebaseapp.com",
+  databaseURL: "https://wishlist-conimendez-default-rtdb.firebaseio.com",
+  projectId: "wishlist-conimendez",
+  storageBucket: "wishlist-conimendez.firebasestorage.app",
+  messagingSenderId: "1086836260521",
+  appId: "1:1086836260521:web:cf69bc1e2f50aaee7533b8"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const resRef = ref(db, 'reservations');
+
 const PRODUCTS = [
-  // Ojos
-  { id:'p2',  cat:'Ojos',         color:'#7c9cbf', name:'Eyeliner gel — Black',                brand:'Asia Skincare',   shade:'Black',                          price:'$19.990', url:'https://asiaskincare.cl/collections/ojos/products/eyeliner-black' },
-  { id:'p3',  cat:'Ojos',         color:'#7c9cbf', name:'Eyeliner gel — Coffee',               brand:'Asia Skincare',   shade:'Coffee',                         price:'$19.990', url:'https://asiaskincare.cl/products/eyeliner-coffee' },
-  { id:'p5',  cat:'Ojos',         color:'#7c9cbf', name:'Sombra en Crema — Allegro',           brand:'Musse Cosmetics', shade:'Allegro (Brillante)',             price:'$19.990', url:'https://mussecosmetics.com/products/sombra-en-crema?variant=47226339754229' },
-  { id:'p6',  cat:'Ojos',         color:'#7c9cbf', name:'Sombra en Crema — Lírica',            brand:'Musse Cosmetics', shade:'Lírica (Matte)',                  price:'$19.990', url:'https://mussecosmetics.com/products/sombra-en-crema?variant=47226339754229' },
-  // Rostro
-  { id:'p4',  cat:'Rostro',       color:'#b59070', name:'Primer Sérum Skin Lover',             brand:'Kiko Milano',     shade:'Universal',                      price:'~$18.990', url:'https://dbs.cl/maquillaje-rostro-primers-primer-serum-skin-lover' },
-  { id:'p7',  cat:'Rostro',       color:'#b59070', name:'Sculpting Touch Stick Contour',       brand:'Kiko Milano',     shade:'201 Chocolate',                  price:'~$14.990', url:'https://dbs.cl/sculpting-touch-creamy-stick-contour-km-01482-0' },
-  { id:'p8',  cat:'Rostro',       color:'#b59070', name:'Skin Tone Concealer',                 brand:'Kiko Milano',     shade:'Peach (corrector)',               price:'~$12.990', url:'https://dbs.cl/skin-tone-concealer-km-91409-0' },
-  { id:'p10', cat:'Rostro',       color:'#b59070', name:'All Nighter Setting Spray 118ml',     brand:'Urban Decay',     shade:'Original',                       price:'~$34.000', url:'https://www.mercadolibre.cl/spray-fijador-de-maquillaje-all-nighter-118ml-urban-decay/p/MLC45615809' },
-  { id:'p11', cat:'Rostro',       color:'#b59070', name:'Even Better All-Over Concealer',      brand:'Clinique',        shade:'WN 04 Bone',                     price:'~$32.000', url:'https://www.paris.cl/corrector-clinique-even-better-all-over-bone-eraser-737124999.html' },
-  { id:'p12', cat:'Rostro',       color:'#b59070', name:'The Cream Bronzer',                   brand:'Veus',            shade:'Tono 101',                       price:'$26.990',  url:'https://veus.cl/collections/maquillaje-rostro/products/bronzer-en-crema-the-cream-bronzer?variant=45611326079142' },
-  { id:'p13', cat:'Rostro',       color:'#b59070', name:'Hy-Blush Cloudy Cream Cheek Duo',    brand:'Natasha Denona',  shade:'Simply Shy',                     price:'~$42.000', url:'https://www.falabella.com/falabella-cl/product/150460118/hy-blush-cloudy-cream-cheek-duo-simply-shy-light-dusty-coralicy-light-pink-natasha-denona/150460119' },
-  // Herramientas
-  { id:'p1',  cat:'Herramientas', color:'#c084a0', name:'Set Everyday Eye Essentials',         brand:'Real Techniques', shade:'Set completo',                   price:'$21.990',  url:'https://dbs.cl/set-de-brocha-everyday-eye-essentials-rh-01991' },
-  { id:'p14', cat:'Herramientas', color:'#c084a0', name:'Oh! So Clean — Limpiador Brochas',   brand:'Magic Makeup',    shade:'100ml · Aroma verbena',          price:'$10.990',  url:'https://www.mercadolibre.cl/limpiador-instantaneo-de-brochas-de-maquillaje-oh-so-clean-magic-makeup/p/MLC52340423' },
-  { id:'p15', cat:'Herramientas', color:'#c084a0', name:'Paleta Mezcladora + Espátula',       brand:'Magic Makeup',    shade:'Acero inoxidable',               price:'$8.990',   url:'https://www.mercadolibre.cl/paleta-mezcladora-de-acero-maquillaje--manicure-espatula/up/MLCU2974649838' },
-  // Cejas
-  { id:'p9',  cat:'Cejas',        color:'#7a9e7e', name:'Brow Harmony Precision Pencil',      brand:'Rare Beauty',     shade:'Deep Brown',                     price:'$23.700',  url:'https://www.blush-bar.cl/lapiz-de-cejas-brow-harmony-precision-pencil/p?skuId=9904' },
+  { id:'p2',  cat:'Ojos',         color:'#7c9cbf', name:'Eyeliner gel — Black',             brand:'Asia Skincare',   shade:'Black',                 price:'$19.990',  url:'https://asiaskincare.cl/collections/ojos/products/eyeliner-black' },
+  { id:'p3',  cat:'Ojos',         color:'#7c9cbf', name:'Eyeliner gel — Coffee',            brand:'Asia Skincare',   shade:'Coffee',                price:'$19.990',  url:'https://asiaskincare.cl/products/eyeliner-coffee' },
+  { id:'p5',  cat:'Ojos',         color:'#7c9cbf', name:'Sombra en Crema — Allegro',        brand:'Musse Cosmetics', shade:'Allegro (Brillante)',   price:'$19.990',  url:'https://mussecosmetics.com/products/sombra-en-crema?variant=47226339754229' },
+  { id:'p6',  cat:'Ojos',         color:'#7c9cbf', name:'Sombra en Crema — Lírica',         brand:'Musse Cosmetics', shade:'Lírica (Matte)',        price:'$19.990',  url:'https://mussecosmetics.com/products/sombra-en-crema?variant=47226339754229' },
+  { id:'p4',  cat:'Rostro',       color:'#b59070', name:'Primer Sérum Skin Lover',          brand:'Kiko Milano',     shade:'Universal',             price:'~$18.990', url:'https://dbs.cl/maquillaje-rostro-primers-primer-serum-skin-lover' },
+  { id:'p7',  cat:'Rostro',       color:'#b59070', name:'Sculpting Touch Stick Contour',    brand:'Kiko Milano',     shade:'201 Chocolate',         price:'~$14.990', url:'https://dbs.cl/sculpting-touch-creamy-stick-contour-km-01482-0' },
+  { id:'p8',  cat:'Rostro',       color:'#b59070', name:'Skin Tone Concealer',              brand:'Kiko Milano',     shade:'Peach (corrector)',     price:'~$12.990', url:'https://dbs.cl/skin-tone-concealer-km-91409-0' },
+  { id:'p10', cat:'Rostro',       color:'#b59070', name:'All Nighter Setting Spray 118ml',  brand:'Urban Decay',     shade:'Original',              price:'~$34.000', url:'https://www.mercadolibre.cl/spray-fijador-de-maquillaje-all-nighter-118ml-urban-decay/p/MLC45615809' },
+  { id:'p11', cat:'Rostro',       color:'#b59070', name:'Even Better All-Over Concealer',   brand:'Clinique',        shade:'WN 04 Bone',            price:'~$32.000', url:'https://www.paris.cl/corrector-clinique-even-better-all-over-bone-eraser-737124999.html' },
+  { id:'p12', cat:'Rostro',       color:'#b59070', name:'The Cream Bronzer',                brand:'Veus',            shade:'Tono 101',              price:'$26.990',  url:'https://veus.cl/collections/maquillaje-rostro/products/bronzer-en-crema-the-cream-bronzer?variant=45611326079142' },
+  { id:'p13', cat:'Rostro',       color:'#b59070', name:'Hy-Blush Cloudy Cream Cheek Duo', brand:'Natasha Denona',  shade:'Simply Shy',            price:'~$42.000', url:'https://www.falabella.com/falabella-cl/product/150460118/hy-blush-cloudy-cream-cheek-duo-simply-shy-light-dusty-coralicy-light-pink-natasha-denona/150460119' },
+  { id:'p1',  cat:'Herramientas', color:'#c084a0', name:'Set Everyday Eye Essentials',      brand:'Real Techniques', shade:'Set completo',          price:'$21.990',  url:'https://dbs.cl/set-de-brocha-everyday-eye-essentials-rh-01991' },
+  { id:'p14', cat:'Herramientas', color:'#c084a0', name:'Oh! So Clean — Limpiador Brochas',brand:'Magic Makeup',    shade:'100ml · Aroma verbena', price:'$10.990',  url:'https://www.mercadolibre.cl/limpiador-instantaneo-de-brochas-de-maquillaje-oh-so-clean-magic-makeup/p/MLC52340423' },
+  { id:'p15', cat:'Herramientas', color:'#c084a0', name:'Paleta Mezcladora + Espátula',    brand:'Magic Makeup',    shade:'Acero inoxidable',      price:'$8.990',   url:'https://www.mercadolibre.cl/paleta-mezcladora-de-acero-maquillaje--manicure-espatula/up/MLCU2974649838' },
+  { id:'p9',  cat:'Cejas',        color:'#7a9e7e', name:'Brow Harmony Precision Pencil',   brand:'Rare Beauty',     shade:'Deep Brown',            price:'$23.700',  url:'https://www.blush-bar.cl/lapiz-de-cejas-brow-harmony-precision-pencil/p?skuId=9904' },
 ];
 
 const CAT_ORDER = ['Ojos','Rostro','Herramientas','Cejas'];
-const STORAGE_KEY = 'wishlist_conimendez_standalone_v1';
-
 let reservations = {};
 let pendingId = null;
-
-function load() {
-  try { reservations = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-  catch(e) { reservations = {}; }
-}
-
-function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(reservations));
-}
+let pendingUnreserveId = null;
 
 function render() {
   const list = document.getElementById('list');
   const bycat = {};
   PRODUCTS.forEach(p => (bycat[p.cat] = bycat[p.cat] || []).push(p));
-
   let html = '';
   CAT_ORDER.forEach(cat => {
     if (!bycat[cat]) return;
-    html += `
-      <div class="cat-header">
-        <div class="cat-dot" style="background:${bycat[cat][0].color}"></div>
-        <div class="cat-label">${cat}</div>
-        <div class="cat-line"></div>
-      </div>`;
+    html += `<div class="cat-header"><div class="cat-dot" style="background:${bycat[cat][0].color}"></div><div class="cat-label">${cat}</div><div class="cat-line"></div></div>`;
     bycat[cat].forEach((p, i) => {
       const taken = reservations[p.id];
-      html += `
-      <div class="card${taken ? ' reserved' : ''}" id="card-${p.id}" style="animation-delay:${i*0.05}s">
+      html += `<div class="card${taken?' reserved':''}" style="animation-delay:${i*0.05}s">
         <div class="card-inner">
           <div class="card-color-dot" style="background:${p.color}"></div>
           <div class="card-body">
@@ -492,50 +193,70 @@ function render() {
           <div class="card-actions">
             <a class="btn-link" href="${p.url}" target="_blank" rel="noopener">Ver ↗</a>
             ${taken
-              ? `<span class="badge-reserved">✓ Reservado</span>`
-              : `<button class="btn-reserve" onclick="openModal('${p.id}')">Lo regalo yo 🎁</button>`
+              ? `<button class="btn-unreserve" data-id="${p.id}">✓ Reservado · deshacer</button>`
+              : `<button class="btn-reserve" data-id="${p.id}">Lo regalo yo 🎁</button>`
             }
           </div>
         </div>
       </div>`;
     });
   });
-
   list.innerHTML = html;
-  const taken = Object.keys(reservations).length;
-  document.getElementById('stat-free').textContent = PRODUCTS.length - taken;
-  document.getElementById('stat-taken').textContent = taken;
+
+  // Attach events via data attributes (no inline onclick needed)
+  list.querySelectorAll('.btn-reserve').forEach(btn => {
+    btn.addEventListener('click', () => openReserve(btn.dataset.id));
+  });
+  list.querySelectorAll('.btn-unreserve').forEach(btn => {
+    btn.addEventListener('click', () => openUnreserve(btn.dataset.id));
+  });
+
+  const takenCount = Object.keys(reservations).length;
+  document.getElementById('stat-free').textContent = PRODUCTS.length - takenCount;
+  document.getElementById('stat-taken').textContent = takenCount;
 }
 
-function openModal(id) {
+function openReserve(id) {
   const p = PRODUCTS.find(x => x.id === id);
-  if (!p || reservations[id]) return;
+  if (!p) return;
   pendingId = id;
-  document.getElementById('modal-body').textContent =
-    `"${p.name}" (${p.shade}) — ${p.price}. Una vez confirmado aparece como reservado para todos. 🎀`;
+  document.getElementById('modal-body').textContent = `"${p.name}" (${p.shade}) — ${p.price}. Una vez confirmado aparece como reservado para todos. 🎀`;
   document.getElementById('modal').classList.add('open');
 }
 
-function closeModal() {
+function openUnreserve(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  pendingUnreserveId = id;
+  document.getElementById('modal-unreserve-body').textContent = `¿Liberas "${p.name}"? Quedará disponible para que otra persona lo reserve.`;
+  document.getElementById('modal-unreserve').classList.add('open');
+}
+
+document.getElementById('btn-cancel-reserve').onclick = () => { document.getElementById('modal').classList.remove('open'); pendingId = null; };
+document.getElementById('btn-cancel-unreserve').onclick = () => { document.getElementById('modal-unreserve').classList.remove('open'); pendingUnreserveId = null; };
+
+document.getElementById('btn-confirm-reserve').onclick = async () => {
+  if (!pendingId) return;
+  await set(ref(db, 'reservations/' + pendingId), true);
   document.getElementById('modal').classList.remove('open');
   pendingId = null;
-}
+};
 
-function confirmReserve() {
-  if (!pendingId) return;
-  reservations[pendingId] = true;
-  save();
-  closeModal();
+document.getElementById('btn-confirm-unreserve').onclick = async () => {
+  if (!pendingUnreserveId) return;
+  await remove(ref(db, 'reservations/' + pendingUnreserveId));
+  document.getElementById('modal-unreserve').classList.remove('open');
+  pendingUnreserveId = null;
+};
+
+document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) { document.getElementById('modal').classList.remove('open'); pendingId = null; }});
+document.getElementById('modal-unreserve').addEventListener('click', e => { if (e.target === e.currentTarget) { document.getElementById('modal-unreserve').classList.remove('open'); pendingUnreserveId = null; }});
+
+// Escucha Firebase en tiempo real
+onValue(resRef, (snapshot) => {
+  reservations = snapshot.val() || {};
   render();
-}
-
-// Close on backdrop click
-document.getElementById('modal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
 });
-
-load();
-render();
 </script>
 </body>
 </html>
